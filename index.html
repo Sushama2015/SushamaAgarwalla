@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Sushama Agarwalla | Research Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+:root {
+  --bg: #0f1419;
+  --bg-alt: #161b22;
+  --surface: #1c2128;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent-soft: rgba(88, 166, 255, 0.15);
+  --accent-2: #3fb950;
+  --border: #30363d;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --font: 'Inter', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --nav-bg: rgba(15, 20, 25, 0.9);
+}
+[data-theme="light"] {
+  --bg: #f6f8fa;
+  --bg-alt: #ffffff;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --text-muted: #656d76;
+  --accent: #0969da;
+  --accent-soft: rgba(9, 105, 218, 0.1);
+  --accent-2: #1a7f37;
+  --border: #d0d7de;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --nav-bg: rgba(255, 255, 255, 0.92);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.25s, color 0.25s;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { opacity: 0.85; }
+.container { width: min(1100px, 92%); margin-inline: auto; }
+
+/* Navbar */
+.navbar {
+  position: sticky; top: 0; z-index: 1000;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-container {
+  width: min(1100px, 94%);
+  margin-inline: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px; gap: 1rem;
+}
+.nav-logo { font-weight: 600; font-size: 1.05rem; color: var(--text); white-space: nowrap; }
+.nav-logo:hover { color: var(--accent); }
+.nav-right { display: flex; align-items: center; gap: 0.5rem; }
+.nav-menu { display: flex; list-style: none; gap: 0.1rem; flex-wrap: wrap; justify-content: flex-end; }
+.nav-link {
+  color: var(--text-muted); font-size: 0.8rem; font-weight: 500;
+  padding: 0.4rem 0.6rem; border-radius: 6px; transition: all 0.2s; cursor: pointer;
+  background: none; border: none; font-family: inherit;
+}
+.nav-link:hover, .nav-link.active { color: var(--text); background: var(--accent-soft); }
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  cursor: pointer; transition: all 0.2s; flex-shrink: 0;
+}
+.theme-toggle:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+
+/* Sections */
+.page-section { display: none; padding: 3.5rem 0 4rem; animation: fadeIn 0.35s ease; }
+.page-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700; margin-bottom: 2rem;
+  letter-spacing: -0.02em; position: relative; display: inline-block;
+}
+.section-title::after {
+  content: ''; position: absolute; bottom: -8px; left: 0;
+  width: 48px; height: 3px; background: var(--accent); border-radius: 2px;
+}
+.subsection-title { font-size: 1.25rem; font-weight: 600; margin: 2.5rem 0 1.25rem; color: var(--text); }
+.page-header { padding: 2.5rem 0 0.5rem; }
+.page-header .section-title { margin-bottom: 0.5rem; }
+.page-desc { color: var(--text-muted); font-size: 0.95rem; max-width: 600px; }
+
+/* Hero */
+.hero { padding-top: 2.5rem; }
+.hero-grid {
+  display: grid; grid-template-columns: 320px 1fr; gap: 3rem; align-items: start;
+}
+.hero-photo-card { position: sticky; top: 90px; }
+.photo-wrapper { position: relative; width: 200px; height: 200px; margin: 0 auto 1.5rem; }
+.profile-photo {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 3px solid var(--border);
+}
+.photo-ring {
+  position: absolute; inset: -6px; border-radius: 50%;
+  border: 2px solid var(--accent); opacity: 0.5;
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.04); opacity: 0.8; }
+}
+.identity-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.5rem; text-align: center; box-shadow: var(--shadow);
+}
+.identity-card h1 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.35rem; }
+.subtitle { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem; }
+.mentor { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.45; }
+.social-links { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1rem; }
+.social-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.45rem 0.75rem; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text-muted); font-size: 0.78rem; font-weight: 500; transition: all 0.2s;
+}
+.social-btn:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.contact-mobile { font-size: 0.85rem; color: var(--text-muted); }
+.contact-mobile i { margin-right: 0.35rem; color: var(--accent); }
+.hero-content .lead { font-size: 1.05rem; margin-bottom: 1rem; color: var(--text); }
+.hero-content p { color: var(--text-muted); margin-bottom: 1rem; }
+
+/* Skills */
+.skills-grid { display: grid; gap: 1.25rem; margin-top: 1rem; }
+.skill-category h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--text); }
+.skill-category h4 i { margin-right: 0.4rem; color: var(--accent); }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.skill-tags span {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem; border-radius: 20px; font-size: 0.8rem; color: var(--text-muted); transition: all 0.2s;
+}
+.skill-tags span:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+/* Cards */
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.35rem 1.5rem; transition: border-color 0.25s, box-shadow 0.25s;
+}
+.card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.badge {
+  display: inline-block; background: var(--accent-soft); color: var(--accent);
+  font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.65rem; border-radius: 6px; margin-bottom: 0.6rem;
+}
+
+/* Timeline */
+.timeline { position: relative; padding-left: 1.5rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--border);
+}
+.timeline-item { position: relative; margin-bottom: 1.5rem; }
+.timeline-marker {
+  position: absolute; left: -1.5rem; top: 1.3rem; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--accent); border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.timeline-content h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+.institution { color: var(--accent); font-weight: 500; font-size: 0.95rem; }
+.highlight { font-size: 0.88rem; color: var(--accent-2); margin-top: 0.4rem; }
+
+/* Projects */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+.project-card .card-icon {
+  width: 44px; height: 44px; border-radius: 10px; background: var(--accent-soft); color: var(--accent);
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem;
+}
+.project-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+.project-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+.patent-list { list-style: none; font-size: 0.82rem; color: var(--text-muted); }
+.patent-list li { margin-bottom: 0.25rem; }
+.patent-list strong { color: var(--accent-2); }
+.meta { font-size: 0.8rem; color: var(--text-muted); font-style: italic; }
+
+/* Experience */
+.experience-card .exp-header {
+  display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;
+}
+.experience-card h3 { font-size: 1.15rem; }
+.exp-duties { padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem; }
+.exp-duties li { margin-bottom: 0.35rem; }
+.achievements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+.achievement { display: flex; align-items: flex-start; gap: 0.9rem; padding: 1.1rem 1.25rem; }
+.achievement i { font-size: 1.35rem; color: var(--accent); margin-top: 0.15rem; flex-shrink: 0; }
+.achievement p { font-size: 0.9rem; color: var(--text-muted); }
+
+/* Publications */
+.pub-list { display: flex; flex-direction: column; gap: 0.9rem; }
+.pub-item { display: grid; grid-template-columns: 70px 1fr; gap: 1rem; align-items: start; }
+.pub-year { font-weight: 700; font-size: 0.95rem; color: var(--accent); padding-top: 0.15rem; }
+.pub-item h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 0.3rem; line-height: 1.4; }
+.authors { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.2rem; }
+.journal { font-size: 0.82rem; color: var(--text-muted); }
+
+/* Conferences */
+.conf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+.conf-item { padding: 1.1rem 1.25rem; }
+.conf-date {
+  display: inline-block; font-size: 0.75rem; font-weight: 600; color: var(--accent);
+  background: var(--accent-soft); padding: 0.2rem 0.55rem; border-radius: 5px; margin-bottom: 0.55rem;
+}
+.conf-item p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
+
+/* Certifications */
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.15rem; }
+.cert-item { padding: 1.35rem; }
+.cert-item i { font-size: 1.5rem; color: var(--accent); margin-bottom: 0.75rem; }
+.cert-item h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+.cert-item p, .cert-item ul { font-size: 0.88rem; color: var(--text-muted); }
+.cert-item ul { padding-left: 1.1rem; margin-top: 0.4rem; }
+.cert-item li { margin-bottom: 0.25rem; }
+
+/* Footer */
+.footer {
+  background: var(--bg-alt); border-top: 1px solid var(--border);
+  padding: 2rem 0; text-align: center; font-size: 0.88rem; color: var(--text-muted); margin-top: auto;
+}
+.footer-links { margin-top: 0.4rem; }
+.footer-links a { margin: 0 0.25rem; }
+.back-to-top {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 1rem;
+  opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99;
+  box-shadow: 0 4px 14px rgba(88, 166, 255, 0.4);
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { transform: translateY(-3px); }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-photo-card { position: static; max-width: 360px; margin-inline: auto; }
+  .nav-menu {
+    display: none; position: absolute; top: 64px; left: 0; right: 0;
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    flex-direction: column; padding: 1rem; gap: 0.25rem;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .nav-link { padding: 0.7rem 1rem; font-size: 0.95rem; }
+}
+@media (max-width: 560px) {
+  .pub-item { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+  </style>
+  <script>
+    (function(){var s=localStorage.getItem('theme');var p=window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',s||(p?'light':'dark'));})();
+  </script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" data-page="about">Dr. Sushama Agarwalla</a>
+      <div class="nav-right">
+        <ul class="nav-menu" id="navMenu">
+          <li><button type="button" class="nav-link active" data-page="about">About Me</button></li>
+          <li><button type="button" class="nav-link" data-page="education">Education</button></li>
+          <li><button type="button" class="nav-link" data-page="projects">Projects</button></li>
+          <li><button type="button" class="nav-link" data-page="experience">Professional Experience</button></li>
+          <li><button type="button" class="nav-link" data-page="publications">Publications</button></li>
+          <li><button type="button" class="nav-link" data-page="conferences">Conferences & Workshops</button></li>
+          <li><button type="button" class="nav-link" data-page="certifications">Certifications</button></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+          <i class="fas fa-moon icon-moon"></i>
+          <i class="fas fa-sun icon-sun"></i>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ABOUT ME (Homepage) -->
+  <section id="about" class="page-section active hero">
+    <div class="container hero-grid">
+      <div class="hero-photo-card">
+        <div class="photo-wrapper">
+          <img src="photo.png" alt="Dr. Sushama Agarwalla" class="profile-photo" />
+          <div class="photo-ring"></div>
+        </div>
+        <div class="identity-card">
+          <h1>Dr. Sushama Agarwalla</h1>
+          <p class="subtitle">PhD, Chemical Engineering · IIT Hyderabad</p>
+          <p class="mentor">Mentor: Dr. Suhanya Duraiswamy<br />Micro Reaction Engineering Lab</p>
+          <div class="social-links">
+            <a href="https://scholar.google.com/citations?user=uJPbCRoAAAAJ&hl=en" target="_blank" rel="noopener" class="social-btn"><i class="fas fa-graduation-cap"></i><span>Google Scholar</span></a>
+            <a href="https://orcid.org/0000-0003-3788-3890" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-orcid"></i><span>ORCID</span></a>
+            <a href="https://www.scopus.com/authid/detail.uri?authorId=" target="_blank" rel="noopener" class="social-btn"><i class="fas fa-book-open"></i><span>Scopus</span></a>
+            <a href="https://www.linkedin.com/search/results/all/?keywords=Sushama%20Agarwalla" target="_blank" rel="noopener" class="social-btn"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+            <a href="mailto:sushama.agarwalla@gmail.com" class="social-btn"><i class="fas fa-envelope"></i><span>Gmail</span></a>
+          </div>
+          <p class="contact-mobile"><i class="fas fa-phone"></i> +91 92386 72009</p>
+        </div>
+      </div>
+      <div class="hero-content">
+        <h2 class="section-title">About Me</h2>
+        <p class="lead">
+          I am a researcher specializing in <strong>microfluidics</strong>, <strong>lab-on-chip systems</strong>,
+          <strong>surface acoustic wave devices</strong>, pathogen detection, and nanomaterials for environmental
+          and healthcare applications. I completed my PhD (2020–2025) at the Indian Institute of Technology Hyderabad
+          under the guidance of Dr. Suhanya Duraiswamy in the Micro Reaction Engineering Lab.
+        </p>
+        <p>
+          My work bridges chemical engineering, biotechnology, and micro-electromechanical systems (MEMS) to develop
+          additive-free cell lysis tools, multiplex PCR assays for rapid MRSA detection, and integrated lab-on-chip
+          platforms for isolation and detection of pathogens from body fluids. I also explore photocatalytic nanomaterials
+          and antimicrobial coatings.
+        </p>
+        <h3 class="subsection-title">Skills &amp; Technologies</h3>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4><i class="fas fa-flask"></i> Research Domains</h4>
+            <div class="skill-tags">
+              <span>Microfluidics</span><span>Acoustophoresis</span><span>Lab-on-Chip</span><span>dPCR / TaqMan PCR</span>
+              <span>Cell Lysis</span><span>Pathogen Detection</span><span>Photocatalysis</span><span>Nanomaterials</span>
+              <span>MEMS / Microactuators</span><span>Antimicrobial Coatings</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4><i class="fas fa-code"></i> Computational &amp; Data</h4>
+            <div class="skill-tags">
+              <span>Python</span><span>Data Analysis &amp; Visualization</span><span>Machine Learning</span>
+              <span>Generative AI</span><span>AI Agents</span><span>3D Numerical Simulation</span>
+              <span>Deep Learning for Computer Vision</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4><i class="fas fa-cogs"></i> Experimental &amp; Analytical</h4>
+            <div class="skill-tags">
+              <span>Food Grain Quality Testing</span><span>Analytical Procedures</span>
+              <span>Nanomaterial Synthesis</span><span>Biochemical Engineering</span><span>Industrial Biotechnology</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="page-section">
+    <div class="container page-header">
+      <h1 class="section-title">Education</h1>
+      <p class="page-desc">Academic background and research training.</p>
+    </div>
+    <div class="container" style="padding-bottom:2rem">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content card">
+            <span class="badge">2020 – 2025</span>
+            <h3>Ph.D. in Chemical Engineering</h3>
+            <p class="institution">Indian Institute of Technology Hyderabad</p>
+            <p>Mentor: Dr. Suhanya Duraiswamy · Micro Reaction Engineering Lab</p>
+            <p class="highlight">Prime Minister’s Research Fellowship (PMRF) awardee · Research Excellence Award (2025)</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content card">
+            <span class="badge">2018 – 2020</span>
+            <h3>M.Tech (Chemical Plant Design)</h3>
+            <p class="institution">National Institute of Technology Karnataka, Surathkal</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content card">
+            <span class="badge">B.Tech</span>
+            <h3>B.Tech (Biotechnology)</h3>
+            <p class="institution">College of Engineering &amp; Technology, Bhubaneswar, Odisha</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="page-section">
+    <div class="container page-header">
+      <h1 class="section-title">Key Projects &amp; Patents</h1>
+      <p class="page-desc">Research projects, patented technologies, and translational work.</p>
+    </div>
+    <div class="container" style="padding-bottom:2rem">
+      <div class="cards-grid">
+        <article class="card project-card">
+          <div class="card-icon"><i class="fas fa-microchip"></i></div>
+          <h3>Integrated Lab-on-Chip for Pathogen Detection</h3>
+          <p>Device for isolation, lysis, and detection of pathogens from body fluids.</p>
+          <ul class="patent-list">
+            <li><strong>Granted</strong> Indian Patent No. 566961 (07.05.2024)</li>
+            <li>PCT Application PCT/IN2025/050545 (04.04.2025)</li>
+          </ul>
+        </article>
+        <article class="card project-card">
+          <div class="card-icon"><i class="fas fa-wave-square"></i></div>
+          <h3>TSAW-based Microfluidic Cell Lysis</h3>
+          <p>Travelling Surface Acoustic Wave microfluidic device enabling additive-free and label-free cell lysis while preserving cytoplasmic integrity.</p>
+          <ul class="patent-list"><li><strong>Granted</strong> Indian Patent No. 563984 (15.06.2023)</li></ul>
+        </article>
+        <article class="card project-card">
+          <div class="card-icon"><i class="fas fa-dna"></i></div>
+          <h3>Multiplex TaqMan PCR for MRSA</h3>
+          <p>Rapid multiplex TaqMan PCR assay for detection of MRSA directly from whole blood samples.</p>
+          <p class="meta">Published in PLoS ONE (2023)</p>
+        </article>
+        <article class="card project-card">
+          <div class="card-icon"><i class="fas fa-leaf"></i></div>
+          <h3>Biosynthesized CuO-TiO₂ Nanocomposites</h3>
+          <p>Extracellular biosynthesis using <em>Alcaligenes aquatilis</em> for photocatalytic degradation of reactive and azo dyes under visible light.</p>
+          <p class="meta">Environmental Science and Pollution Research (2023/2025)</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="page-section">
+    <div class="container page-header">
+      <h1 class="section-title">Professional Experience</h1>
+      <p class="page-desc">Industry experience and major achievements.</p>
+    </div>
+    <div class="container" style="padding-bottom:2rem">
+      <div class="card experience-card">
+        <div class="exp-header">
+          <div>
+            <h3>Quality Analyst</h3>
+            <p class="institution">Ganapati Agro Product (P) Ltd., Odisha</p>
+          </div>
+          <span class="badge">15 Jul 2012 – 03 May 2018</span>
+        </div>
+        <ul class="exp-duties">
+          <li>Sampling and testing of food grains</li>
+          <li>Quality assessment and grading</li>
+          <li>Routine and non-routine testing procedures</li>
+          <li>Hands-on training in analytical procedures for quality testing of animal feeds (Jul 2012)</li>
+        </ul>
+      </div>
+      <h3 class="subsection-title">Achievements</h3>
+      <div class="achievements-grid">
+        <div class="card achievement"><i class="fas fa-trophy"></i><p>Research Excellence Award — IIT Hyderabad 17th Foundation Day, 2025</p></div>
+        <div class="card achievement"><i class="fas fa-award"></i><p>Prime Minister’s Research Fellowship (PMRF), May 2021</p></div>
+        <div class="card achievement"><i class="fas fa-star"></i><p>NPTEL Discipline Star in Biotechnology, December 2020</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="page-section">
+    <div class="container page-header">
+      <h1 class="section-title">Publications</h1>
+      <p class="page-desc">Journal articles, book chapters, and conference proceedings.</p>
+    </div>
+    <div class="container" style="padding-bottom:2rem">
+      <h2 class="subsection-title" style="margin-top:0">Significant Publications</h2>
+      <div class="pub-list">
+        <article class="pub-item card"><span class="pub-year">2026</span><div>
+          <h3>Bacteriophage therapy for multidrug-resistant bacterial infections: recent advances, clinical evidence, and translational challenges</h3>
+          <p class="authors">Agarwalla S.</p>
+          <p class="journal">Archives of Microbiology 208:435 · <a href="https://doi.org/10.1007/s00203-026-04980-w" target="_blank">DOI</a></p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2025</span><div>
+          <h3>Microbiosensors: Advancing diagnosis and prognosis through MEMS</h3>
+          <p class="authors">Agarwalla S., Singh S.K., Duraiswamy S.</p>
+          <p class="journal">Biomicrofluidics 19, 041504 · <a href="https://doi.org/10.1063/5.0245253" target="_blank">DOI</a></p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2024</span><div>
+          <h3>A traveling surface acoustic wave-based micropiezoactuator: A tool for additive- and label-free cell lysis</h3>
+          <p class="authors">Agarwalla S., Singh S.K., Duraiswamy S.</p>
+          <p class="journal">Biomicrofluidics 18, 054104 · <a href="https://doi.org/10.1063/5.0209663" target="_blank">DOI</a></p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2023</span><div>
+          <h3>A multiplex Taqman PCR assay for MRSA detection from whole blood</h3>
+          <p class="authors">Duraiswamy S., Agarwalla S., Lok K.S., Tse Y.Y., Wu R., Wang Z.</p>
+          <p class="journal">PLoS ONE 18(11): e0294782 · <a href="https://doi.org/10.1371/journal.pone.0294782" target="_blank">DOI</a></p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2023</span><div>
+          <h3>Extracellular biosynthesis of CuO-TiO₂ nanocomposites using Alcaligenes aquatilis for the photodegradation of reactive and azo dyes under visible light irradiation</h3>
+          <p class="authors">Agarwalla S., Shetty Kodialbail V.</p>
+          <p class="journal">Environmental Science and Pollution Research · <a href="https://doi.org/10.1007/s11356-023-28489-7" target="_blank">DOI</a></p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2022</span><div>
+          <h3>Current Commercial dPCR Platforms: technology and market review</h3>
+          <p class="authors">Tan L.L., Loganathan N., Agarwalla S., Yang C., Yuan W., Zeng J., Wu R., Wang W., Duraiswamy S.</p>
+          <p class="journal">Critical Reviews in Biotechnology 43:3, 433-464 · <a href="https://doi.org/10.1080/07388551.2022.2037503" target="_blank">DOI</a></p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2021</span><div>
+          <h3>Recent advances in heterogeneous micro-photoreactors for wastewater treatment application</h3>
+          <p class="authors">Shukla K., Agarwalla S., Duraiswamy S., Gupta R.K.</p>
+          <p class="journal">Chemical Engineering Science 235, 116511 · <a href="https://doi.org/10.1016/j.ces.2021.116511" target="_blank">DOI</a></p>
+        </div></article>
+      </div>
+      <h2 class="subsection-title">Book Chapters</h2>
+      <div class="pub-list">
+        <article class="pub-item card"><span class="pub-year">2026</span><div>
+          <h3>Interplay Between Quorum Sensing, Biofilm Formation and Antibiotic Resistance in Staphylococcus Aureus</h3>
+          <p class="authors">Agarwalla S., Singh S.K.</p>
+          <p class="journal">IntechOpen · doi: 10.5772/intechopen.1014874</p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2026</span><div>
+          <h3>Flow Visualization Techniques and Applications: Insights from Particle Tracking</h3>
+          <p class="authors">Singh S.K., Agarwalla S., Agarwalla D.K.</p>
+          <p class="journal">Fluid Mechanics, CRC Press</p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2026</span><div>
+          <h3>Lab on a Chip in Healthcare Monitoring: Current and Future Perspectives</h3>
+          <p class="authors">Agarwalla S., Singh S.K.</p>
+          <p class="journal">Fluid Mechanics in the Digital Era, CRC Press</p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2024</span><div>
+          <h3>Current Insights and Future Directions in Staphylococcus aureus Infections: Advances and Perspectives</h3>
+          <p class="authors">Agarwalla S., Duraiswamy S.</p>
+          <p class="journal">IntechOpen · doi: 10.5772/intechopen.1006887</p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2024/25</span><div>
+          <h3>Safety Management: Hazard Identification and Risk Assessment at the Workplace</h3>
+          <p class="authors">Agarwalla S., Singh S.K., Ibrahim M.A., Duraiswamy S.</p>
+          <p class="journal">Chemical Engineering Essentials, Vol. 2, Wiley-ISTE</p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2024</span><div>
+          <h3>Antimicrobial Coatings</h3>
+          <p class="authors">Agarwalla S., Singh S.K., Ibrahim M.A., Noothalapati H., Duraiswamy S.</p>
+          <p class="journal">Functional Coatings, Wiley · <a href="https://doi.org/10.1002/9781394207305.ch9" target="_blank">DOI</a></p>
+        </div></article>
+      </div>
+      <h2 class="subsection-title">Conference Proceedings</h2>
+      <div class="pub-list">
+        <article class="pub-item card"><span class="pub-year">2025</span><div>
+          <h3>Advanced Design and 3D Numerical Simulation of Traveling Surface Acoustic Waves for Healthcare Applications</h3>
+          <p class="authors">Agarwalla S., Singh S.K., Duraiswamy S.</p>
+          <p class="journal">IC-MNSS 2024, Springer · <a href="https://doi.org/10.1007/978-981-96-3445-3_14" target="_blank">DOI</a></p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2025</span><div>
+          <h3>Sepsis chip: a toolkit for the rapid pathogen isolation and detection from whole blood</h3>
+          <p class="authors">Agarwalla S., Duraiswamy S.</p>
+          <p class="journal">μTAS 2024 · DOI: 10.70477/SJXV2853</p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2023</span><div>
+          <h3>Performance Analysis of Orthopedic Screw Used for Fixation of Fracture of Bone</h3>
+          <p class="authors">Agarwalla S., Agarwalla D.K.</p>
+          <p class="journal">ICAMEMS-2023, Springer · <a href="https://doi.org/10.1007/978-981-99-5613-5_16" target="_blank">DOI</a></p>
+        </div></article>
+        <article class="pub-item card"><span class="pub-year">2023</span><div>
+          <h3>Micro-piezo Actuator for Cell Lysis</h3>
+          <p class="authors">Agarwalla S., Duraiswamy S.</p>
+          <p class="journal">MAMM 2022, Springer · <a href="https://doi.org/10.1007/978-3-031-20353-4_25" target="_blank">DOI</a></p>
+        </div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFERENCES -->
+  <section id="conferences" class="page-section">
+    <div class="container page-header">
+      <h1 class="section-title">Conferences &amp; Workshops</h1>
+      <p class="page-desc">Presentations, posters, and participation in national and international events.</p>
+    </div>
+    <div class="container" style="padding-bottom:2rem">
+      <div class="conf-grid">
+        <div class="card conf-item"><span class="conf-date">Feb 2025</span><p>Participated in Commercializing Microfluidic-based Devices – Prototype to Product: Issues, Bottlenecks, and Solutions, Hyderabad</p></div>
+        <div class="card conf-item"><span class="conf-date">Jan 2025</span><p>3rd International Conference on APSCON 2025 IEEE Applied Sensing Application, IIT Hyderabad</p></div>
+        <div class="card conf-item"><span class="conf-date">Oct 2024</span><p>Poster: Sepsis chip toolkit — 28th International Conference on Miniaturized Systems for Chemistry and Life Sciences (μTAS 2024), Montreal, Canada</p></div>
+        <div class="card conf-item"><span class="conf-date">Aug 2024</span><p>Paper: Integration of AI-Enhanced on-Chip PCR for Improved Pathogen Detection — AIS-ISS 2024, NUS, Singapore</p></div>
+        <div class="card conf-item"><span class="conf-date">Jul 2024</span><p>Paper: Advanced Design and 3D Numerical Simulation of TSAWs — ISSS International Conference on Micro, Nano and Smart Systems, IISc Bangalore</p></div>
+        <div class="card conf-item"><span class="conf-date">Jun 2024</span><p>Paper: Rapid and Selective Cell Lysis with Chemical-Free Piezoelectric Actuator — MicroFIP 2024, Polytechnique University Hong Kong</p></div>
+        <div class="card conf-item"><span class="conf-date">Apr 2024</span><p>Poster: Multiplex Taqman PCR Assay for Rapid MRSA Detection — HySci 2024, IIT Hyderabad</p></div>
+        <div class="card conf-item"><span class="conf-date">Mar 2024</span><p>RSC Poster: TSAW based Micropiezoactuator for additive-free cell lysis</p></div>
+        <div class="card conf-item"><span class="conf-date">Sep–Oct 2023</span><p>Design and 3D Numerical Simulation of TSAWs for cell lysis — 1st Indian National Conference on Micro Nano Fluids (iCOM 2023)</p></div>
+        <div class="card conf-item"><span class="conf-date">Apr 2023</span><p>Performance Analysis of Orthopedic Screw — 2nd ICAMEMS-2023</p></div>
+        <div class="card conf-item"><span class="conf-date">Dec 2022</span><p>Micro-Piezo Actuator for Cell Lysis — MAMM 2022</p></div>
+        <div class="card conf-item"><span class="conf-date">Nov 2022</span><p>Extracellular biosynthesis of CuO-TiO₂ Nanocomposites — International Chemical Engineering Conference (IChEC)</p></div>
+        <div class="card conf-item"><span class="conf-date">Jul 2021</span><p>Multiplex Taqman PCR assay for MRSA — Global Health Workshop, Chemical and Biological Microsystem Society (CBMS)</p></div>
+        <div class="card conf-item"><span class="conf-date">Jan 2020</span><p>Biosynthesis of Cu-based nanoparticles — International Conference on Emerging Trends in Catalysis (ETC 2020)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="page-section">
+    <div class="container page-header">
+      <h1 class="section-title">Certifications &amp; Professional Development</h1>
+      <p class="page-desc">Courses, workshops, and continuous learning activities.</p>
+    </div>
+    <div class="container" style="padding-bottom:2rem">
+      <div class="cert-grid">
+        <div class="card cert-item">
+          <i class="fas fa-certificate"></i>
+          <h4>Coursera (Mar–May 2025)</h4>
+          <ul>
+            <li>Data Analysis and Visualization with Python</li>
+            <li>Python Programming Fundamentals</li>
+            <li>AI Agents and Agentic AI Architecture in Python</li>
+            <li>Trustworthy Generative AI</li>
+          </ul>
+        </div>
+        <div class="card cert-item">
+          <i class="fas fa-certificate"></i>
+          <h4>Deep Learning with Generative AI for Computer Vision</h4>
+          <p>Electronics and ICT Academy, Ministry of Electronics and Information Technology, Govt. of India · 8–19 Nov 2024</p>
+        </div>
+        <div class="card cert-item">
+          <i class="fas fa-certificate"></i>
+          <h4>An Introduction to Machine Learning with Python Programming</h4>
+          <p>i-HUB Divya Sampark, IIT Roorkee &amp; RBPL · 11 Sep – 20 Oct 2023</p>
+        </div>
+        <div class="card cert-item">
+          <i class="fas fa-globe-asia"></i>
+          <h4>SAKURA SCIENCE Exchange Program</h4>
+          <p>Japan Science and Technology Agency &amp; Shimane University, Matsue, Japan · 8–22 Feb 2023</p>
+        </div>
+        <div class="card cert-item">
+          <i class="fas fa-microchip"></i>
+          <h4>INUP – i2i Online Familiarization Workshop</h4>
+          <p>Nanofabrication Technologies, IIT Bombay · 23–25 Jan 2023</p>
+        </div>
+        <div class="card cert-item">
+          <i class="fas fa-brain"></i>
+          <h4>GIAN Course</h4>
+          <p>Artificial Neural Network Modelling for processing Metals and Materials · IIT Hyderabad · 13–17 Jun 2022</p>
+        </div>
+        <div class="card cert-item">
+          <i class="fas fa-medal"></i>
+          <h4>NPTEL Online Certifications (2018–2020)</h4>
+          <ul>
+            <li>Aspects of Biochemical Engineering — Elite Gold</li>
+            <li>Industrial Biotechnology — Elite Silver</li>
+            <li>Computer aided Drug Design, Heat transfer, Biochemistry, Bioenergy, Cell culture technologies, Bioreactor Design, Bioengineering</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Dr. Sushama Agarwalla · All rights reserved</p>
+      <p class="footer-links">
+        <a href="mailto:sushama.agarwalla@gmail.com">sushama.agarwalla@gmail.com</a> ·
+        <a href="https://orcid.org/0000-0003-3788-3890" target="_blank">ORCID</a> ·
+        <a href="https://scholar.google.com/citations?user=uJPbCRoAAAAJ&hl=en" target="_blank">Google Scholar</a>
+      </p>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    // Theme
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Page switching
+    function showPage(id) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      const section = document.getElementById(id);
+      if (section) section.classList.add('active');
+      document.querySelectorAll('[data-page="' + id + '"]').forEach(el => {
+        if (el.classList.contains('nav-link')) el.classList.add('active');
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('navMenu').classList.remove('open');
+    }
+
+    document.querySelectorAll('[data-page]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage(el.getAttribute('data-page'));
+      });
+    });
+
+    // Mobile menu
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navMenu').classList.toggle('open');
+    });
+
+    // Back to top
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
